@@ -26,13 +26,13 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+//  '*': true,
 
-  UserController: {
-
-		'*': false,
-		login: true,
-    logout: 'sessionAuth',
-    register: true,
-	}
+//  UserController: {
+//
+//		'*': false,
+//		login: true,
+//    logout: 'sessionAuth',
+//    register: true,
+//	}
 };

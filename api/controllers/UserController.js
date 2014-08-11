@@ -41,7 +41,24 @@ module.exports = {
   },
 
   register: function(req, res) {
-    res.view('user/register');
+    var err = {};
+    if (!req.body.password) {
+      err.password = "Vous devez saisir un mot de passe, il vous servira a vous connecter a l'application"
+    }
+    if (!req.body.email) {
+      err.email = "Vous devez saisir un e-mail, il vous servira pour vous connecter a l'application"
+    }
+
+    User.create({
+      email: req.body.email,
+      password: req.body.password
+    }).done(function(err, user) {
+      if (err) {
+        res.view('user/register', err);
+      } else {
+        res.view('user/me', user);
+      }
+    });
   }
 
 };
