@@ -33,7 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'homepage',
+    layout: 'layout'
   },
 
   /***************************************************************************
@@ -46,7 +47,19 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/register': {
-    view: 'user/register'
-  }
+  'post /register': 'UserController.register',
+  'get /register': { view: 'user/register' },
+
+  'get /login': {
+    view: 'user/login',
+    locals: {layout: './layout'}
+  },
+
+  'post /login': 'UserController.login',
+
+  'get /logout': 'UserController.logout',
+
+  'get /account': 'UserController.profile',
+
+  'get /user/:id?': 'UserController.find'
 };

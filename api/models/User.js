@@ -17,7 +17,8 @@ module.exports = {
       type: 'string',
       required: false,
       minLength: 6
-    }
+    },
+    admin: 'boolean'
   },
 
   beforeCreate: function(attrs, next) {

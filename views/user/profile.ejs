@@ -1,0 +1,24 @@
+<h3>Profile</h3>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">e-mail</label>
+    <div>
+      <p class="form-control-static">
+        <%= user.email %>
+      </p>
+    </div>
+  </div>
+  
+  <% if (user.admin) { %>
+    <div class="form-group">
+      <label class="col-sm-2 conrol-label"> Admin ? </label>
+      <div>
+        <p class="form-control-static">
+          Oui
+        </p>
+      </div>
+    </div>
+  <% } %>
+</div>
+
