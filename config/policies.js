@@ -29,10 +29,13 @@ module.exports.policies = {
   '*': true,
 
   UserController: {
+    '*': false,
     find: 'isAdmin',
+    findOne: 'sessionAuth',
     login: true,
     register: true,
     logout: 'sessionAuth',
-    profile: 'sessionAuth'
+    profile: 'sessionAuth',
+    populate: 'sessionAuth'
   }
 };

@@ -18,7 +18,11 @@ module.exports = {
       required: false,
       minLength: 6
     },
-    admin: 'boolean'
+    admin: 'boolean',
+    combis: {
+      collection: 'combi',
+      via: 'user'
+    }
   },
 
   beforeCreate: function(attrs, next) {

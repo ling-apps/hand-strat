@@ -52,23 +52,26 @@
       </div>
     </nav>
 
-    <% if (req.session.flash.success) { %>
-      <div class="flash alert alert-success">
-        <%- req.flash('success') %>
-      </div>
+    <% if (req.session.flash) { %>
+      <% if (req.session.flash.success) { %>
+        <div class="flash alert alert-success">
+          <%- req.flash('success') %>
+        </div>
+      <% } %>
+
+      <% if (req.session.flash.indo) { %>
+        <div class="flash alert alert-info">
+          <%- req.flash('info') %>
+        </div>
+      <% } %>
+
+      <% if (req.session.flash.error) { %>
+        <div class="flash alert alert-danger">
+          <%- req.flash('error') %>
+        </div>
+      <% } %>
     <% } %>
 
-    <% if (req.session.flash.indo) { %>
-      <div class="flash alert alert-info">
-        <%- req.flash('info') %>
-      </div>
-    <% } %>
-
-    <% if (req.session.flash.error) { %>
-      <div class="flash alert alert-danger">
-        <%- req.flash('error') %>
-      </div>
-    <% } %>
     <div class="container-fluid content">
       <%- body %>
     </div>
