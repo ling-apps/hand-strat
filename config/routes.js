@@ -47,14 +47,19 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  // --- Users
+  // --- Auth
   'get /register': { view: 'user/register' },
-  'post /register': 'UserController.register',
+  'post /register': 'AuthController.register',
 
   'get /login': { view: 'user/login' },
-  'post /login': 'UserController.login',
+  'post /login': 'AuthController.login',
 
-  'get /logout': 'UserController.logout',
+  'get /logout': 'AuthController.logout',
+  'get /auth/google': 'AuthController.google',
+  'get /auth/google/callback': 'AuthController.google',
+  'get /auth/twitter': 'AuthController.twitter',
+  'get /auth/twitter/callback': 'AuthController.twitter',
 
+  // --- User
   'get /account': 'UserController.profile'
 };
