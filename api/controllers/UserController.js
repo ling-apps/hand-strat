@@ -22,11 +22,7 @@ module.exports = {
   },
 
   profile: function(req, res) {
-    if (req.session.user) {
-      User.findOneById(req.session.user).exec(function(err, user) {
-        res.view('user/profile', {user: user});
-      });
-    }
+    res.view('user/profile', {user: req.user});
   }
 
 };

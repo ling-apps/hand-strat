@@ -1,3 +1,4 @@
+var bcrypt = require('bcrypt');
 /**
 * User.js
 *
@@ -13,11 +14,16 @@ module.exports = {
     firstname: 'string',
     lastname: 'string',
     email: 'string',
+    name: 'string',
     admin: 'boolean',
     password: 'string',
     combis: {
       collection: 'combi',
       via: 'user'
+    },
+
+    validPassword: function(password) {
+      return bcrypt.compareSync(password, this.password)
     }
   },
 
@@ -29,7 +35,6 @@ module.exports = {
 
   beforeCreate: function(attrs, next) {
     if (undefined !== attrs.password) {
-      var bcrypt = require('bcrypt');
 
       bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);

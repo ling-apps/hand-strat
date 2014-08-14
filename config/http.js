@@ -1,5 +1,8 @@
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 var verifyHandler = function(token, tokenSecret, profile, done) {
     User.findOne({uid: profile.id}, function(err, user) {
@@ -25,7 +28,6 @@ var verifyHandler = function(token, tokenSecret, profile, done) {
         }
 
         User.create(data).exec(function(err, user) {
-          console.log('user creation:', err, user);
           done(err, user);
         });
       }
@@ -51,12 +53,41 @@ passport.deserializeUser(function(id, done) {
 module.exports.express = {
 
   customMiddleware: function(app) {
+    passport.use(new GoogleStrategy({
+      clientID: sails.config.GOOGLE.CLIENT_ID,
+      clientSecret: sails.config.GOOGLE.CLIENT_SECRET,
+      callbackURL: 'http://localhost:1337/auth/google/callback'
+    }, verifyHandler));
+
+    passport.use(new FacebookStrategy({
+      clientID: sails.config.FACEBOOK.APP_ID,
+      clientSecret: sails.config.FACEBOOK.APP_SECRET,
+      callbackURL: 'http://localhost:1337/auth/facebook'
+    }, verifyHandler));
 
     passport.use(new TwitterStrategy({
-      consumerKey: "WcDW8EIiWE9XLia0MT3nqw",
-      consumerSecret: "OQzV7AhPoHaPPbfk6J25sJEzWcEezq92MEXi05XQqvw",
+      consumerKey: sails.config.TWITTER.CLIENT_ID,
+      consumerSecret: sails.config.TWITTER.CLIENT_SECRET,
       callbackURL: 'http://localhost:1337/auth/twitter'
     }, verifyHandler));
+
+    passport.use(new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+      },
+      function(email, password, done) {
+        User.findOne({email: email}, function(err, user) {
+          if (err) { return done(err); }
+          if (!user) {
+            return done(null, false, { message: 'Incorrect username.' });
+          }
+          if (!user.validPassword(password)) {
+            return done(null, false, { message: 'Incorrect password.' });
+          }
+          return done(null, user);
+        });
+      }
+    ));
 
     app.use(passport.initialize());
     app.use(passport.session());

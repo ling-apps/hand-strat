@@ -48,52 +48,20 @@ module.exports = {
     });
   },
 
-  twitter: function (req, res) {
-    passport.authenticate('twitter', { failureRedirect: '/login', scope: ['email'] },
-      function (err, user) {
-        console.log('authentication callback');
-        console.log(err, user);
-        req.logIn(user, function (err) {
-          if (err) {
-            console.log(err);
-            res.view('500');
-            return;
-          }
-          res.redirect('/');
-          return;
-        });
-    })(req, res);
-  },
-
-  // https://developers.google.com/
-  // https://developers.google.com/accounts/docs/OAuth2Login#scope-param
-  google: function (req, res) {
-    passport.authenticate('google', { failureRedirect: '/login', scope:['https://www.googleapis.com/auth/plus.login','https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email'] },
-      function (err, user) {
-        req.logIn(user, function (err) {
-          if (err) {
-            console.log(err);
-            res.view('500');
-            return;
-          }
-          res.redirect('/');
-          return;
-        });
-    })(req, res);
-  },
-
-  login: function(req, res) {
-    passport.authenticate('local', {failureRedirect: '/login'}, function(err, user) {
+  auth: function(req, res) {
+    var provider = req.params.provider;
+    var scope = sails.config[provider.toUpperCase()].scope;
+    passport.authenticate(req.params.provider, {failureRedirect: '/login', scope: scope}, function(err, user) {
       req.logIn(user, function (err) {
-        if (err) {
-          console.log(err);
-          res.view('500');
+          if (err) {
+            console.log(err);
+            res.view('500');
+            return;
+          }
+          res.redirect('/');
           return;
-        }
-        res.redirect('/');
-        return;
-      });
-    });
+        });
+    })(req, res);
   }
 
 };
