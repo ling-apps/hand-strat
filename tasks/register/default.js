@@ -1,3 +1,3 @@
 module.exports = function (grunt) {
-	grunt.registerTask('default', ['compileAssets', 'linkAssets',  'watch']);
+	grunt.registerTask('default', ['clean:js', 'clean:style', 'browserify:dev', 'sass:dev','watch']);
 };

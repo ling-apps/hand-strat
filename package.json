@@ -43,7 +43,9 @@
   "author": "b2l",
   "license": "",
   "devDependencies": {
-    "sails-mongo": "~0.10.4",
-    "bcrypt": "~0.8.0"
+    "bcrypt": "~0.8.0",
+    "grunt-browserify": "^2.1.4",
+    "grunt-contrib-sass": "^0.7.4",
+    "sails-mongo": "~0.10.4"
   }
 }

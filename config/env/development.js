@@ -24,7 +24,7 @@ module.exports = {
   GOOGLE: {
     CLIENT_ID: '211904269077-o58t3aekvtfptgjrin9g7fblkb9pmmba.apps.googleusercontent.com',
     CLIENT_SECRET: 'PxJMhvDftLB0WN6JNGIB8hsB',
-    scope: ['https://www.googleapis.com/auth/plus.login','https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email']
+    scope: ['https://www.googleapis.com/auth/plus.login']
   },
 
   TWITTER: {
@@ -35,7 +35,7 @@ module.exports = {
 
   FACEBOOK: {
     APP_ID: '807988539232086',
-    APP_SECRET: 'a5dc48a55b14e93333ec304a5b608ac7',
+    APP_SECRET: 'aafb0d76e4ad60c6ca10b060ea6f3105',
     scope: ['email']
   },
 

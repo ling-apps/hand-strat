@@ -31,11 +31,15 @@ module.exports.policies = {
   UserController: {
     '*': false,
     find: 'isAdmin',
-    findOne: 'sessionAuth',
+    findOne: 'isLogged',
     login: true,
     register: true,
-    logout: 'sessionAuth',
-    profile: 'sessionAuth',
-    populate: 'sessionAuth'
+    logout: 'isLogged',
+    profile: 'isLogged',
+    populate: 'isLogged'
+  },
+
+  CombiController: {
+      '*': true
   }
 };
