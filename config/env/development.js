@@ -19,6 +19,27 @@ module.exports = {
 
   models: {
      connection: 'mongodb'
-  }
+  },
 
+  GOOGLE: {
+    CLIENT_ID: '211904269077-o58t3aekvtfptgjrin9g7fblkb9pmmba.apps.googleusercontent.com',
+    CLIENT_SECRET: 'PxJMhvDftLB0WN6JNGIB8hsB',
+    scope: ['https://www.googleapis.com/auth/plus.login']
+  },
+
+  TWITTER: {
+    CLIENT_ID: 'WcDW8EIiWE9XLia0MT3nqw',
+    CLIENT_SECRET: 'OQzV7AhPoHaPPbfk6J25sJEzWcEezq92MEXi05XQqvw',
+    scope: ['email']
+  },
+
+  FACEBOOK: {
+    APP_ID: '807988539232086',
+    APP_SECRET: 'aafb0d76e4ad60c6ca10b060ea6f3105',
+    scope: ['email']
+  },
+
+  LOCAL: {
+    scope: null
+  }
 };
