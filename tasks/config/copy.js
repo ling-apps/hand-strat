@@ -7,16 +7,15 @@
  * sails project.
  *
  * For usage docs see:
- * 		https://github.com/gruntjs/grunt-contrib-clean
+ *     https://github.com/gruntjs/grunt-contrib-clean
  */
 module.exports = function(grunt) {
 
-	grunt.config.set('clean', {
-		style: ['.tmp/public/styles/**'],
-		js: ['.tmp/public/js/**'],
-		img: ['.tmp/public/img/**'],
-		build: ['www']
-	});
+  grunt.config.set('copy', {
+    img: {
+      files: [{expand: true, cwd: 'assets/images', src: ['**'], dest: '.tmp/public/images/'}]
+    }
+  });
 
-	grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 };

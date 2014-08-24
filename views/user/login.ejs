@@ -1,6 +1,39 @@
-<form action="/login" method="POST">
-  <input type="text" name="email" placeholder="e-mail" />
-  <input type="password" name="password" placeholder="Mot de passe" />
 
-  <input type="submit" value="connexion" />
-</form>
+
+<div class="login center-block clearfix">
+    <h1 class="h1 text-center">Connectez vous !</h1>
+    <div class="social-login">
+        <div class="social-login-item">
+            <a type="button" class="btn btn-login facebook" href="/auth/facebook">
+                <em class="logo"></em>
+                <span class="btn-login-text">Connectez vous avec Facebook</span>
+            </a>
+        </div>
+
+        <div class="social-login-item">
+            <a type="button" class="btn btn-login google" href="/auth/google">
+                <em class="logo"></em>
+                <span class="btn-login-text">Connectez vous avec Google</span>
+            </a>
+        </div>
+
+        <div class="social-login-item">
+            <a type="button" class="btn btn-login twitter" href="/auth/twitter">
+                <em class="logo"></em>
+                <span class="btn-login-text">Connectez vous avec Twitter</span>
+            </a>
+        </div>
+    </div>
+
+    <form action="/auth/local" method="POST" class="form-login">
+        <div class="form-group">
+            <input class="form-control input-lg" type="text" name="email" id="email" placeholder="e-mail"/>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control input-lg" type="password" name="password" placeholder="Mot de passe"/>
+        </div>
+
+        <input class="btn btn-primary btn-block btn-lg" type="submit" value="connexion"/>
+    </form>
+</div>
