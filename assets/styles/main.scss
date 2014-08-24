@@ -1,17 +1,139 @@
-/**
- * importer.less
- *
- * By default, new Sails projects are configured to compile this file
- * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
- * included automatically unless they are imported below.
- *
- * The LESS files imported below are compiled and included in the order
- * they are listed.  Mixins, variables, etc. should be imported first
- * so that they can be accessed by subsequent LESS stylesheets.
- *
- * (Just like the rest of the asset pipeline bundled in Sails, you can
- * always omit, customize, or replace this behavior with SASS, SCSS,
- * or any other Grunt tasks you like.)
- */
+@media (min-width: 750px) {
+  .login {
+    width: 700px;
+  }
+}
+@media (max-width: 750px) {
+  .login {
+    width: 350px;
+  }
+}
+.login {
+  .h1 {
+    margin-bottom: 25px;
+  }
+}
 
-@import 'layout';
+.form-login {
+  margin: auto;
+  width: 350px;
+
+  .input-lg {
+    height: 42px;
+  }
+  .btn-lg {
+    height: 42px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.social-login {
+  width: 350px;
+}
+
+.social-login-item {
+  margin: 0 auto 15px;
+  width: 325px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 750px) {
+  .form-login {
+    padding-left: 25px;
+    float: right;
+  }
+  .social-login {
+    border-right: 1px solid #eee;
+    padding-right: 25px;
+    float: left;
+  }
+}
+@media (max-width: 750px) {
+  .social-login {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+  .form-login {
+    width: 325px;
+  }
+}
+
+
+.btn-login,
+.btn-login:hover,
+.btn-login:visited,
+.btn-login:active {
+
+  position: relative;
+  border-radius: 3px;
+  height: 42px;
+  font-size: 15px;
+  padding: 10px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+  text-align: left;
+
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 42px;
+    height: 42px;
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05);
+    background: no-repeat scroll rgba(255, 255, 255, 0.08) center center;
+  }
+
+  .btn-login-text {
+    margin-left: 42px;
+    margin-top: -3px;
+    display: inline-block;
+  }
+
+  .logo {
+    background-size: 42px;
+  }
+
+  &.facebook {
+    background: linear-gradient(#5678BC, #314A7B) repeat scroll 0% 0% transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-right: 1px solid #1B2945;
+    border-color: #293F69 #1B2945 #1B2945;
+
+    .logo {
+      background-image: url(/images/facebook.png);
+    }
+  }
+
+  &.google {
+    background: linear-gradient(#F87474, #E65858) repeat scroll 0% 0% transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-right: 1px solid #D21F1F;
+    border-color: #E34242 #D21F1F #D21F1F;
+
+    .logo {
+      background-image: url(/images/google.png);
+    }
+  }
+
+  &.twitter {
+    background: linear-gradient(#5FBEE4, #2091BD) repeat scroll 0% 0% transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-right: 1px solid #1C80A8;
+    border-color: #2091BD #1C80A8 #1C80A8;
+
+    .logo {
+      background-image: url(/images/twitter.png);
+    }
+  }
+}
