@@ -9,24 +9,26 @@
  * and re-run the appropriate tasks.
  *
  * For usage docs see:
- * 		https://github.com/gruntjs/grunt-contrib-watch
+ *     https://github.com/gruntjs/grunt-contrib-watch
  *
  */
 module.exports = function(grunt) {
 
-	grunt.config.set('watch', {
-		scss: {
-			// Assets to watch:
-			files: ['assets/styles/**/*.scss'],
+  grunt.config.set('watch', {
+    scss: {
 
-			// When assets are changed:
-			tasks: ['clean:style' , 'sass:dev']
-		},
-        javascript: {
-            files: ['assets/js/**/*'],
-            tasks: ['clean:js', 'browserify:dev']
-        }
-	});
+      // Assets to watch:
+      files: ['assets/styles/**/*.scss'],
 
-	grunt.loadNpmTasks('grunt-contrib-watch');
+      // When assets are changed:
+      tasks: ['sass']
+    },
+    js: {
+      files: ['assets/js/**/^[^_]*.js'],
+
+      tasks: ['browserify']
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
 };
