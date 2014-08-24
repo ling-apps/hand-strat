@@ -11,12 +11,19 @@
  */
 module.exports = function(grunt) {
 
-  grunt.config.set('clean', {
-    style: ['.tmp/public/**'],
-    js: ['./tmp/public/'],
-    img: ['./tmp/public/'],
-    build: ['www']
+  grunt.config.set('browserify', {
+    options: {},
+    dev: {
+      files: {
+        '.tmp/public/js/main.js': ['assets/js/main.js']
+      }
+    },
+    build: {
+      files: {
+        'www/public/js/main.js': ['assets/js/main.js']
+      }
+    }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-browserify');
 };
