@@ -1,14 +1,37 @@
+@import 'typo';
+
+.navbar-header a,
+.navbar-header a:visited,
+.navbar-header a:active,
+.navbar-header a {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 50px;
+  margin: auto;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.navbar-nav a {
+  text-decoration: underline;
+}
+
 @media (min-width: 750px) {
-  .login {
+  .block {
     width: 700px;
   }
 }
 @media (max-width: 750px) {
-  .login {
+  .block {
     width: 350px;
   }
 }
-.login {
+
+.block {
   .h1 {
     margin-bottom: 25px;
   }
@@ -21,10 +44,10 @@
   .input-lg {
     height: 42px;
   }
+
   .btn-lg {
     height: 42px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 8px 0;
   }
 }
 
@@ -43,21 +66,30 @@
 
 @media (min-width: 750px) {
   .form-login {
-    padding-left: 25px;
     float: right;
+    padding-left: 25px;
   }
+
   .social-login {
     border-right: 1px solid #eee;
-    padding-right: 25px;
     float: left;
+    padding-right: 25px;
   }
+
+  .form-login,
+  .social-login {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
 }
 @media (max-width: 750px) {
   .social-login {
     border-bottom: 1px solid #eee;
-    padding-bottom: 25px;
     margin-bottom: 25px;
+    padding-bottom: 25px;
   }
+
   .form-login {
     width: 325px;
   }
@@ -68,72 +100,69 @@
 .btn-login:hover,
 .btn-login:visited,
 .btn-login:active {
-
-  position: relative;
   border-radius: 3px;
-  height: 42px;
-  font-size: 15px;
-  padding: 10px 18px;
-  font-weight: bold;
+  color: #fff;
   cursor: pointer;
-  color: white;
-  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  height: 42px;
+  padding: 10px 18px;
+  position: relative;
   text-align: left;
+  width: 100%;
 
   .logo {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0;
-    width: 42px;
+    background: no-repeat scroll rgba(255, 255, 255, .08) center center;
+    background-size: 42px;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, .05);
     height: 42px;
-    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05);
-    background: no-repeat scroll rgba(255, 255, 255, 0.08) center center;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 42px;
   }
 
   .btn-login-text {
+    display: inline-block;
     margin-left: 42px;
     margin-top: -3px;
-    display: inline-block;
-  }
-
-  .logo {
-    background-size: 42px;
   }
 
   &.facebook {
-    background: linear-gradient(#5678BC, #314A7B) repeat scroll 0% 0% transparent;
-    border-width: 1px;
+    background: linear-gradient(#5678bc, #314a7b) repeat scroll 0% 0% transparent;
+    border-color: #293f69 #1b2945 #1b2945;
+    border-right: 1px solid #1b2945;
     border-style: solid;
-    border-right: 1px solid #1B2945;
-    border-color: #293F69 #1B2945 #1B2945;
+    border-width: 1px;
 
     .logo {
-      background-image: url(/images/facebook.png);
+      background-image: url('/images/facebook.png');
     }
   }
 
   &.google {
-    background: linear-gradient(#F87474, #E65858) repeat scroll 0% 0% transparent;
-    border-width: 1px;
+    background: linear-gradient(#f87474, #e65858) repeat scroll 0% 0% transparent;
+    border-color: #e34242 #d21f1f #d21f1f;
+    border-right: 1px solid #d21f1f;
     border-style: solid;
-    border-right: 1px solid #D21F1F;
-    border-color: #E34242 #D21F1F #D21F1F;
+    border-width: 1px;
 
     .logo {
-      background-image: url(/images/google.png);
+      background-image: url('/images/google.png');
     }
   }
 
   &.twitter {
-    background: linear-gradient(#5FBEE4, #2091BD) repeat scroll 0% 0% transparent;
-    border-width: 1px;
+    background: linear-gradient(#5fbee4, #2091bd) repeat scroll 0% 0% transparent;
+    border-color: #2091bd #1c80a8 #1c80a8;
+    border-right: 1px solid #1c80a8;
     border-style: solid;
-    border-right: 1px solid #1C80A8;
-    border-color: #2091BD #1C80A8 #1C80A8;
+    border-width: 1px;
 
     .logo {
-      background-image: url(/images/twitter.png);
+      background-image: url('/images/twitter.png');
     }
   }
 }
+
