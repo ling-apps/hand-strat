@@ -16,17 +16,16 @@ module.exports = function(grunt) {
 
   grunt.config.set('watch', {
     scss: {
-
-      // Assets to watch:
       files: ['assets/styles/**/*.scss'],
-
-      // When assets are changed:
       tasks: ['sass']
     },
     js: {
       files: ['assets/js/**/^[^_]*.js'],
-
       tasks: ['browserify']
+    },
+    img: {
+      files: ['assets/images/**/*'],
+      tasks: ['clean:img', 'copy:img']
     }
   });
 
