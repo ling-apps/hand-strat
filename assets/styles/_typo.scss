@@ -1,0 +1,27 @@
+// Font faces
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500italic,500,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900italic,900);
+
+body,
+input,
+select {
+  font-family: 'Roboto';
+}
+
+.app-title {
+  font-family: 'Ubuntu';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ubuntu' !important;
+}
+
+a {
+  text-decoration: underline;
+}
+
