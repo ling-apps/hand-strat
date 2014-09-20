@@ -14,6 +14,16 @@ module.exports = function(grunt) {
   grunt.config.set('copy', {
     img: {
       files: [{expand: true, cwd: 'assets/images', src: ['**'], dest: '.tmp/public/images/'}]
+    },
+    js: {
+      files: [
+        {
+          expand: true,
+          cwd: 'assets/js/lib',
+          src: ['**'],
+          dest: '.tmp/public/js/'
+        }
+      ]
     }
   });
 

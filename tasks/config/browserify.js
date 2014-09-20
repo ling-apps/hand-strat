@@ -15,12 +15,12 @@ module.exports = function(grunt) {
     options: {},
     dev: {
       files: {
-        '.tmp/public/js/main.js': ['assets/js/main.js']
+        '.tmp/public/js/app.js': ['assets/js/app.js']
       }
     },
     build: {
       files: {
-        'www/public/js/main.js': ['assets/js/main.js']
+        'www/public/js/app.js': ['assets/js/app.js']
       }
     }
   });

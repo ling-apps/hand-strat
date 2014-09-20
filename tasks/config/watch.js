@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       tasks: ['sass']
     },
     js: {
-      files: ['assets/js/**/^[^_]*.js'],
+      files: ['assets/js/**/*.js'],
       tasks: ['browserify']
     },
     img: {
