@@ -40,6 +40,7 @@ module.exports.policies = {
   },
 
   CombiController: {
-      '*': true
+    '*': 'isLogged',
+    index: true
   }
 };

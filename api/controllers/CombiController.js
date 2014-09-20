@@ -6,10 +6,18 @@
  */
 
 module.exports = {
+  // --- Client action
+  index: function(req, res) {
+    Combi.find({user: req.user})
+      .exec(function(err, combis) {
+        res.view('combi/index', {combis: combis});
+      });
+  },
 
-    index: function(req, res) {
-        res.view('combi/index');
-    }
-
+  // --- API
+  find: function(req, res) {},
+  create: function(req, res) {},
+  update: function(req, res) {},
+  destroy: function(req, res) {}
 };
 
