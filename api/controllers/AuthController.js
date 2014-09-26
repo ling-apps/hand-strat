@@ -58,7 +58,7 @@ module.exports = {
             res.view('500');
             return;
           }
-          res.redirect('/');
+          res.redirect('/combis');
           return;
         });
     })(req, res);
