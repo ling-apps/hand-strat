@@ -10,10 +10,14 @@ function htmlEncode(s) {
 $(document).ready(function() {
 
   // --- Event Listener
+  Combis.addChangeListener(render);
   $('#app-wrapper').on('click', '#add-combi-btn', handleAddCombiClick);
   $('#app-wrapper').on('submit', '#add-combi-form', handleAddCombiSubmit);
 
   // --- View
+  function render() {
+    var combis = Combis.getAll();
+  }
 
   // --- Event Handler
   function handleAddCombiClick(e) {
