@@ -20,10 +20,10 @@ module.exports = {
   register: function(req, res) {
     var err = {};
     if (!req.params.password) {
-      err.password = "Vous devez saisir un mot de passe, il vous servira a vous connecter a l'application"
+      err.password = "Vous devez saisir un mot de passe, il vous servira a vous connecter a l'application";
     }
     if (!req.params.email) {
-      err.email = "Vous devez saisir un e-mail, il vous servira pour vous connecter a l'application"
+      err.email = "Vous devez saisir un e-mail, il vous servira pour vous connecter a l'application";
     }
 
     var admin = req.body.email === 'b2l.powa@gmail.com';
