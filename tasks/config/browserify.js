@@ -12,7 +12,7 @@
 module.exports = function(grunt) {
 
   grunt.config.set('browserify', {
-    options: {},
+    options: { transform: ['es6ify'] },
     dev: {
       files: {
         '.tmp/public/js/app.js': ['assets/js/app.js']
