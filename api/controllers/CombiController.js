@@ -16,8 +16,23 @@ module.exports = {
 
   // --- API
   find: function(req, res) {},
-  create: function(req, res) {},
+
+  create: function(req, res) {
+    Combi.create({
+      name: req.body.name,
+      user: req.user
+    }).exec(function(err, combi) {
+      if (err) {
+        res.json({error: err}, 500);
+        return;
+      }
+
+      res.json(combi);
+    });
+  },
+
   update: function(req, res) {},
+
   destroy: function(req, res) {}
 };
 
