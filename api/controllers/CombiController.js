@@ -15,12 +15,21 @@ module.exports = {
   },
 
   // --- API
-  find: function(req, res) {},
+  find: function(req, res) {
+    User.findOne(req.user.id).populate('combis')
+      .exec(function(err, user) {
+        if (err) {
+          res.json({error: err}, 500);
+        } else {
+          res.json(user.combis);
+        }
+      });
+  },
 
   create: function(req, res) {
     Combi.create({
       name: req.body.name,
-      user: req.user
+      owner: req.user
     }).exec(function(err, combi) {
       if (err) {
         res.json({error: err}, 500);

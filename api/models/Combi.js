@@ -8,16 +8,11 @@
 module.exports = {
 
   attributes: {
-    name: {
-      type: 'string',
+    name: 'STRING',
+    content: 'STRING',
+    owner: {
+      model: 'User',
       required: true
-    },
-    content: {
-      type: 'string',
-      required: false
-    },
-    user: {
-      model: 'user'
     }
   }
 };
