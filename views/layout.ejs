@@ -3,20 +3,20 @@
   <head>
     <title>New Sails App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <link rel="stylesheet" href="/styles/main.css">
 
     <script src="/js/jquery-2.1.1.min.js"></script>
   </head>
 
   <body>
-    <nav class='navbar navbar-default'>
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="app-title" href="/">TacticHand</a>
-        </div>
+    <nav class='pure-menu pure-menu-open pure-menu-horizontal'>
 
-        <ul class="nav navbar-nav pull-right">
+        <a href="#" class="pure-menu-heading">HandStrat</a>
+        <ul><li>
+            </li>
+        </ul>
+        <ul class="pull-right">
             <% if (req.isAuthenticated()) { %>
                 <li><a href="/logout">Deconnexion</a></li>
                 <li><a href="/account">Mon compte</a></li>
@@ -26,7 +26,7 @@
                 <li><a href="/register">Creer un compte</a></li>
             <% } %>
         </ul>
-      </div>
+
     </nav>
 
     <% if (req.session.flash) { %>
@@ -48,7 +48,7 @@
         </div>
       <% } %>
     <% } %>
-
+    <div class="bg-content-top"></div>
     <div class="container-fluid content">
       <%- body %>
     </div>

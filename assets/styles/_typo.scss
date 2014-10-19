@@ -6,10 +6,12 @@ body,
 input,
 select {
   font-family: 'Roboto';
+  font-size: 16px !important;
+  text-rendering: optimizeLegibility;
 }
 
 .app-title {
-  font-family: 'Ubuntu';
+  font-family: 'Roboto';
 }
 
 h1,
@@ -18,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Ubuntu' !important;
+  font-family: 'Roboto' !important;
 }
 
 a {

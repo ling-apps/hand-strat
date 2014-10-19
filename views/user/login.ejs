@@ -23,15 +23,15 @@
         </div>
     </div>
 
-    <form action="/auth/local" method="POST" class="form-login">
-        <div class="form-group">
-            <input class="form-control input-lg" type="text" name="email" id="email" placeholder="e-mail"/>
-        </div>
-
-        <div class="form-group">
-            <input class="form-control input-lg" type="password" name="password" placeholder="Mot de passe"/>
-        </div>
-
-        <input class="btn btn-primary btn-block btn-lg" type="submit" value="connexion"/>
+    <form action="/auth/local" method="POST" class="form-login pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <input class="pure-input-1" type="text" name="email" id="email" placeholder="e-mail"/>
+            </div>
+            <div class="pure-control-group">
+                <input class="pure-input-1" type="password" name="password" placeholder="Mot de passe"/>
+            </div>
+            <button class="pure-button pure-input-1 pure-button-primary" type="submit">Connexion</button>
+        </fieldset>
     </form>
 </div>
