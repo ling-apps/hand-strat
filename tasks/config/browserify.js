@@ -12,15 +12,15 @@
 module.exports = function(grunt) {
 
   grunt.config.set('browserify', {
-    options: { transform: ['es6ify'] },
+    options: { transform: ['reactify'] },
     dev: {
       files: {
-        '.tmp/public/js/app.js': ['assets/js/app.js']
+        '.tmp/public/js/main.js': ['assets/js/main.js']
       }
     },
     build: {
       files: {
-        'www/public/js/app.js': ['assets/js/app.js']
+        'www/public/js/main.js': ['assets/js/main.js']
       }
     }
   });

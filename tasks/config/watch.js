@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     },
     js: {
       files: ['assets/js/**/*.js'],
-      tasks: ['browserify']
+      tasks: ['browserify:dev']
     },
     img: {
       files: ['assets/images/**/*'],

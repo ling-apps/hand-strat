@@ -41,7 +41,9 @@
     "bcrypt": "~0.8.0",
     "grunt-browserify": "~2.1.4",
     "grunt-contrib-sass": "~0.8.0",
-    "es6ify": "~1.4.0",
-    "superagent": "~0.18.2"
+    "superagent": "~0.18.2",
+    "reactify": "~0.14.0",
+    "react": "~0.11.2",
+    "flux": "~2.0.1"
   }
 }
