@@ -14,7 +14,6 @@ var HandStrat = React.createClass({
   },
 
   onCombiSelect: function(combi) {
-    console.log(combi);
     this.setState({
       selectedCombi: combi
     });

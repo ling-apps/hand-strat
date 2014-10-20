@@ -6,7 +6,6 @@ var CombiStore = require('../stores/Combis');
 function getState() {
   return {
     combis: CombiStore.getAll(),
-    selected: null,
     searching: false
   };
 }

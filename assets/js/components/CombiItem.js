@@ -5,7 +5,6 @@ var CombiActions = require('../actions/CombiActions');
 
 var Combi = React.createClass({
   getInitialState: function() {
-    console.log(this.props.combi);
     return {
       combiName: this.props.combi.name
     };
