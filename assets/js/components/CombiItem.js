@@ -26,7 +26,7 @@ var Combi = React.createClass({
       <div className="combi-view">
         <div className="header">
           <form onSubmit={this.saveCombi}>
-            <input type="text" value={this.state.combiName} placeholder="Nom de la combinaison" onChange={this.handleChange} />
+            <input type="text" defaultValue={this.state.combiName} placeholder="Nom de la combinaison" ref="combiName"/>
           </form>
 
           <div className="pull-right">

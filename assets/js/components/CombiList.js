@@ -36,8 +36,13 @@ var CombiList = React.createClass({
   render: function() {
     var combis = [];
     this.state.combis.map(function(combi, index) {
+      var className = ['combi-list-item'];
+      if (combi === this.props.selected)
+        className.push('selected');
+
+      className = className.join(' ');
       combis.push(
-        <div key={index} onClick={this.props.onCombiSelect.bind(null, combi)} className="combi-list-item">{combi.name}</div>
+        <div key={index} onClick={this.props.onCombiSelect.bind(null, combi)} className={className}>{combi.name}</div>
       );
     }.bind(this));
     return (
