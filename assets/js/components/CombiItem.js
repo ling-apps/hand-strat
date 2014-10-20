@@ -19,11 +19,7 @@ var Combi = React.createClass({
     e.preventDefault();
     var combi = this.props.combi;
     combi.name = this.state.combiName;
-    CombiActions.createCombi(combi);
-  },
-
-  removeCombi: function() {
-
+    CombiActions.saveCombi(combi);
   },
 
   render: function() {

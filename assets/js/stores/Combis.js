@@ -29,8 +29,7 @@ Combi.prototype.destroy = function() {};
 var _combis = [];
 var E = new EventEmitter();
 
-function createCombi(name) {
-  var combi = new Combi(name);
+function saveCombi(combi) {
   combi.save();
   _combis.push(combi);
 }
@@ -84,9 +83,9 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.actionType) {
-    case 'COMBI_CREATE':
+    case 'COMBI_SAVE':
       combi = action.combi;
-      createCombi(combi);
+      saveCombi(combi);
       break;
 
     case 'COMBI_REMOVE':

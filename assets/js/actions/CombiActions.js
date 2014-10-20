@@ -2,9 +2,9 @@ var AppDispatcher = require('../Dispatcher');
 
 var CombiActions = {
 
-  createCombi: function(combi) {
+  saveCombi: function(combi) {
     AppDispatcher.handleViewAction({
-      actionType: 'COMBI_CREATE',
+      actionType: 'COMBI_SAVE',
       combi: combi
     });
   },
