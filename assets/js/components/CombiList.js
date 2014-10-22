@@ -49,10 +49,10 @@ var CombiList = React.createClass({
       <div className="sidebar">
         {this.state.searching ?
           <div className="header">
-            <input type="text" ref="searchField" placeholder="Search" />
             <span className="actions">
               <span className="icon-cancel" onClick={this.onCancelSearch}>Cancel</span>
             </span>
+            <input type="text" ref="searchField" placeholder="Search" />
           </div>
         :
           <div className="header">
