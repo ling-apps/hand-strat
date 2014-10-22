@@ -19,10 +19,16 @@ var HandStrat = React.createClass({
     });
   },
 
+  addCombi: function() {
+    this.setState({
+      selectedCombi: {name: ""}
+    });
+  },
+
   render: function() {
     return (
       <div>
-        <CombiList selected={this.state.selectedCombi} onCombiSelect={this.onCombiSelect} />
+        <CombiList selected={this.state.selectedCombi} onCombiSelect={this.onCombiSelect} onAddCombi={this.addCombi}/>
         <Combi combi={this.state.selectedCombi} key={this.state.selectedCombi} />
       </div>
     );

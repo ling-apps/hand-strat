@@ -56,10 +56,11 @@ var CombiList = React.createClass({
           </div>
         :
           <div className="header">
-            <h2>Combis</h2>
             <span className="actions">
               <span className="icon-search" onClick={this.onSearchClick}>Search</span>
             </span>
+            <span className="floating-action" onClick={this.props.onAddCombi}>Add</span>
+            <h2>Combis</h2>
           </div>
         }
 
