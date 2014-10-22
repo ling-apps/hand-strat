@@ -2,16 +2,12 @@ var request = require('superagent');
 var EventEmitter = require('events').EventEmitter;
 var baseUrl = '/_api/combis';
 
-function Combi(params) {
-  this.name = params.name || "";
-  this.content = params.content || "";
-}
-
-Combi.prototype.save = function() {
+function createCombi(combi) {
+  _combis.push(combi);
   request
     .post(baseUrl)
     .set('Accept', 'application/json')
-    .send({name: this.name})
+    .send(combi)
     .end(function(err, res) {
       if (err)
         return console.log(err);
@@ -19,20 +15,46 @@ Combi.prototype.save = function() {
       this.id = res.body.id;
       E.emit('change');
     }.bind(this));
-};
+}
 
-Combi.prototype.update = function() {};
+function updateCombi(combi) {
+  var c = _combis.filter(function(_combi, index) {
+    return combi.id == _combi.id;
+  })[0];
+  c.name = combi.name;
+  request
+    .put(baseUrl + '/' + combi.id)
+    .set('Accept', 'application/json')
+    .send(combi)
+    .end(function(err, res) {
+      if (err)
+        return console.log(err);
 
-Combi.prototype.destroy = function() {};
+      E.emit('change');
+    }.bind(this));
+}
+
+function removeCombi(combiId) {
+  request
+    .delete(baseUrl + '/' + combi.id)
+    .set('Accept', 'application/json')
+    .end(function(err, res) {
+      if (err)
+        return console.log(err);
+
+      this.id = res.body.id;
+      E.emit('change');
+    }.bind(this));
+}
+
+function saveCombi(combi) {
+  combi.id ? updateCombi(combi) : createCombi(combi);
+}
 
 // --- Store
 var _combis = [];
 var E = new EventEmitter();
 
-function saveCombi(combi) {
-  combi.save();
-  _combis.push(combi);
-}
 
 function removeCombi(id) {
   var combi = null;
@@ -69,7 +91,7 @@ var Combis = {
         if (err) return console.log(err);
 
         res.body.forEach(function(combi, index) {
-          _combis.push(new Combi(combi));
+          _combis.push(combi);
         });
         E.emit('change');
       }.bind(this));
