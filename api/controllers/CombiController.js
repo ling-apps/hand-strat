@@ -48,6 +48,13 @@ module.exports = {
     });
   },
 
-  destroy: function(req, res) {}
+  destroy: function(req, res) {
+    var id = req.params.id;
+    Combi.destroy(id).exec(function(err) {
+      if (err) return res.json({error: err}, 500);
+
+      res.send(200);
+    });
+  }
 };
 
