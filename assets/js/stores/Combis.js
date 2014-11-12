@@ -100,7 +100,9 @@ AppDispatcher.register(function(payload) {
       break;
 
     case 'COMBI_REMOVE':
-
+      combiId = action.combiId;
+      removeCombi(combiId);
+      break;
   }
 
 });

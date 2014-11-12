@@ -21,6 +21,13 @@ var Combi = React.createClass({
     CombiActions.saveCombi(combi);
   },
 
+  removeCombi: function(e) {
+    e.preventDefault();
+    var combi = this.props.combi;
+    combiId = combi.id;
+    CombiActions.removeCombi(combiId);
+  },
+
   render: function() {
     return (
       <div className="combi-view">
