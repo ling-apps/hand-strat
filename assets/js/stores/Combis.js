@@ -35,14 +35,18 @@ function updateCombi(combi) {
 }
 
 function removeCombi(combiId) {
+  var c = _combis.filter(function(_combi, index) {
+    return combiId == _combi.id;
+  })[0];
+  var position = _combis.indexOf(c);
+  _combis.splice(position, 1);
   request
-    .delete(baseUrl + '/' + combi.id)
+    .del(baseUrl + '/' + combiId)
     .set('Accept', 'application/json')
     .end(function(err, res) {
       if (err)
         return console.log(err);
 
-      this.id = res.body.id;
       E.emit('change');
     }.bind(this));
 }
@@ -54,21 +58,6 @@ function saveCombi(combi) {
 // --- Store
 var _combis = [];
 var E = new EventEmitter();
-
-
-function removeCombi(id) {
-  var combi = null;
-  var index = null;
-  _combis.map(function(c, i) {
-    if (combi.id === id) {
-      combi = c;
-      index = i;
-    }
-  });
-
-  combi.destroy();
-  _combis.slice(index, 1);
-}
 
 var Combis = {
   getAll: function() {
