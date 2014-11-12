@@ -40,7 +40,13 @@ module.exports = {
     });
   },
 
-  update: function(req, res) {},
+  update: function(req, res) {
+    Combi.findOne(req.params.id).exec(function(err, combi) {
+      combi.name = req.body.name
+      combi.save();
+      res.send(200);
+    });
+  },
 
   destroy: function(req, res) {}
 };

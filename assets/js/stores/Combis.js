@@ -12,7 +12,7 @@ function createCombi(combi) {
       if (err)
         return console.log(err);
 
-      this.id = res.body.id;
+      combi.id = res.body.id;
       E.emit('change');
     }.bind(this));
 }
