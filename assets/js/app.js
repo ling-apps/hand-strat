@@ -1,36 +1,39 @@
-/* Hand Strat app */
-var Combis = require('./Combis');
+/** @jsx React.DOM */
+var React = require('react');
 
-// --- Tools
-function htmlEncode(s) {
-  return s.replace(/&(?!\w+([;\s]|$))/g, "&amp;")
-    .replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+var CombiList = require('./components/CombiList');
+var Combi = require('./components/CombiItem');
+var CombiStore = require('./stores/Combis');
+CombiStore.load();
 
-$(document).ready(function() {
+var HandStrat = React.createClass({
+  getInitialState: function() {
+    return {
+      selectedCombi: {name: ""}
+    };
+  },
 
-  // --- Event Listener
-  Combis.addChangeListener(render);
-  $('#app-wrapper').on('click', '#add-combi-btn', handleAddCombiClick);
-  $('#app-wrapper').on('submit', '#add-combi-form', handleAddCombiSubmit);
+  onCombiSelect: function(combi) {
+    this.setState({
+      selectedCombi: combi
+    });
+  },
 
-  // --- View
-  function render() {
-    var combis = Combis.getAll();
-  }
+  addCombi: function() {
+    this.setState({
+      selectedCombi: {name: ""}
+    });
+  },
 
-  // --- Event Handler
-  function handleAddCombiClick(e) {
-    e.preventDefault();
-    $('#add-combi-form-wrapper').removeClass('hidden');
-  }
-
-  function handleAddCombiSubmit(e) {
-    e.preventDefault();
-    var input = $(this).find('input[type="text"]');
-    Combis.createCombi(htmlEncode(input.val()));
-    input.val('');
-    $('#add-combi-form-wrapper').addClass('hidden');
+  render: function() {
+    return (
+      <div>
+        <CombiList selected={this.state.selectedCombi} onCombiSelect={this.onCombiSelect} onAddCombi={this.addCombi}/>
+        <Combi combi={this.state.selectedCombi} key={this.state.selectedCombi} />
+      </div>
+    );
   }
 
 });
+
+module.exports = HandStrat;

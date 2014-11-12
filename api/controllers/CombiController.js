@@ -15,12 +15,21 @@ module.exports = {
   },
 
   // --- API
-  find: function(req, res) {},
+  find: function(req, res) {
+    User.findOne(req.user.id).populate('combis')
+      .exec(function(err, user) {
+        if (err) {
+          res.json({error: err}, 500);
+        } else {
+          res.json(user.combis);
+        }
+      });
+  },
 
   create: function(req, res) {
     Combi.create({
       name: req.body.name,
-      user: req.user
+      owner: req.user
     }).exec(function(err, combi) {
       if (err) {
         res.json({error: err}, 500);
@@ -31,8 +40,21 @@ module.exports = {
     });
   },
 
-  update: function(req, res) {},
+  update: function(req, res) {
+    Combi.findOne(req.params.id).exec(function(err, combi) {
+      combi.name = req.body.name
+      combi.save();
+      res.send(200);
+    });
+  },
 
-  destroy: function(req, res) {}
+  destroy: function(req, res) {
+    var id = req.params.id;
+    Combi.destroy(id).exec(function(err) {
+      if (err) return res.json({error: err}, 500);
+
+      res.send(200);
+    });
+  }
 };
 

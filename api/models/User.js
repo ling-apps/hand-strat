@@ -9,21 +9,21 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
   attributes: {
-    provider: 'string',
-    uid: 'string',
-    firstname: 'string',
-    lastname: 'string',
-    email: 'string',
-    name: 'string',
-    admin: 'boolean',
-    password: 'string',
+    provider: 'STRING',
+    uid: 'STRING',
+    firstname: 'STRING',
+    lastname: 'STRING',
+    email: 'STRING',
+    name: 'STRING',
+    admin: 'BOOLEAN',
+    password: 'STRING',
     combis: {
       collection: 'combi',
-      via: 'user'
+      via: 'owner'
     },
 
     validPassword: function(password) {
-      return bcrypt.compareSync(password, this.password)
+      return bcrypt.compareSync(password, this.password);
     }
   },
 
