@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react');
-//var CombiEdit = require('./CombiEdit');
+
 var CombiActions = require('../actions/CombiActions');
+var CombiDrawer= require('./CombiDrawer');
 
 var Combi = React.createClass({
   getInitialState: function() {
@@ -40,6 +41,9 @@ var Combi = React.createClass({
             <button onClick={this.saveCombi}>Sauver</button>
             <button onClick={this.removeCombi}>Supprimer</button>
           </div>
+        </div>
+        <div className="content">
+          <CombiDrawer combi={this.props.combi} />
         </div>
       </div>
     );
