@@ -19,6 +19,7 @@ function StrategieView(selector, onSave, onRemove) {
 
   this.events = {
     'click': {
+      '.reset': this.reset,
       '.record': this.record,
       '.combi': this.play,
       '.save': function(e) {
@@ -43,6 +44,11 @@ StrategieView.prototype.setModel = function setModel(model) {
   this.combis = model;
   this.render();
 };
+
+StrategieView.prototype.reset = function reset() {
+  this.terrain.placeDefence('1-5');
+  this.terrain.placePlayers();
+}
 
 StrategieView.prototype._render = function() {
   var tplContent = document.getElementById('strat-template').innerHTML;
