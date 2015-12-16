@@ -1,4 +1,4 @@
-var Paper = require('./paper-full.min.js').exports;
+var Paper = require('./paper-full.min.js');
 var _ = require('./underscore-1.5.2.js');
 
 var strokeColor = "white";

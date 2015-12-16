@@ -7,7 +7,7 @@ var _ = require('./lib/underscore-1.5.2.js');
 /* -------------------------------------------- */
 
 function Model() {};
-Model.prototype.save = function() {
+Model.prototype.save = function() {
     this.emit('saved');
 };
 

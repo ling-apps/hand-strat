@@ -19,7 +19,6 @@ Joueurs.prototype.load = function() {
     }, this);
 };
 Joueurs.prototype.changed = function() {
-    console.log('changed');
     this.emit('change');
 }
 

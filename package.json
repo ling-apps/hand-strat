@@ -1,35 +1,26 @@
 {
-    "name": "spatester",
-    "version": "1.0.0",
-    "description": "Single Page App tester",
-    "main": "src/testem-adapter.js",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com:viareport/spatester.git"
-    },
-    "keywords": [
-        "test",
-        "framework",
-        "javascript",
-        "singlepageapp"
-    ],
-    "dependencies": {
-        "express": "3.x",
-        "microee": "~0.0.2",
-        "ejs" : "x",
-        "mongodb": "1.2.10",
-        "grunt": "~0.4.1",
-        "grunt-contrib-watch": "~0.5.3",
-        "grunt-browserify2": "0.1.8",
-        "grunt-contrib-compass": "0.6.0",
-        "node-persist": "0.0.1"
-    },
-    "engines": {
-        "node": ">=0.4.0"
-    },
-    "author": {
-        "name": "Nicolas Medda",
-        "email": "nmedda@viareport.com"
-    },
-    "license": "BSD"
+  "name": "hand-strat",
+  "version": "1.0.0",
+  "main": "public/app.js",
+  "dependencies": {
+    "microee": "~0.0.6"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "author": {
+    "name": "Nicolas Medda",
+    "email": "nicolas.medda@ling.fr"
+  },
+  "license": "BSD",
+  "devDependencies": {
+    "express": "^4.13.3",
+    "firebase": "^2.3.2",
+    "grunt": "~0.4.1",
+    "grunt-browserify2": "0.1.8",
+    "grunt-contrib-compass": "0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "mongodb": "^2.0.52",
+    "webpack": "^1.12.9"
+  }
 }
