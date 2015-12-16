@@ -73,11 +73,9 @@
 	        var firebase = new Firebase(firebaseUrl);
 	        var combis = firebase.child('/combis');
 	        function onSave(combi) {
-	          console.log(combi);
 	          combis.push(combi)
 	        }
 	        function onRemove(combiId) {
-	          console.log(combiId);
 	          combis.child(combiId).remove()
 	        }
 	        var stratView = new StrategieView('#content', onSave, onRemove);
@@ -287,6 +285,7 @@
 
 	  this.events = {
 	    'click': {
+	      '.reset': this.reset,
 	      '.record': this.record,
 	      '.combi': this.play,
 	      '.save': function(e) {
@@ -311,6 +310,11 @@
 	  this.combis = model;
 	  this.render();
 	};
+
+	StrategieView.prototype.reset = function reset() {
+	  this.terrain.placeDefence('1-5');
+	  this.terrain.placePlayers();
+	}
 
 	StrategieView.prototype._render = function() {
 	  var tplContent = document.getElementById('strat-template').innerHTML;
@@ -383,8 +387,11 @@
 	};
 
 	StrategieView.prototype.paperOnFrame = function(e) {
-	  if (this.combi && this.combi.length > 0 && this.playing) {
-	    this._play();
+	  var speed = document.getElementById('speed').value;
+	  if (e.count % speed == 0) {
+	    if (this.combi && this.combi.length > 0 && this.playing) {
+	      this._play();
+	    }
 	  }
 	};
 
@@ -424,7 +431,6 @@
 	  var aCombi = this.combis.filter(function(combi) {
 	    return combi.id === combiId;
 	  });
-	  console.log(aCombi);
 	  this.combi = aCombi[0].combi.slice(0);
 
 	  var oldSelectedCombi = document.querySelector('.combi.selected');
