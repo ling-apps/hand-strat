@@ -314,6 +314,7 @@
 	StrategieView.prototype.reset = function reset() {
 	  this.terrain.placeDefence('1-5');
 	  this.terrain.placePlayers();
+	  this.terrain.placeBall();
 	}
 
 	StrategieView.prototype._render = function() {
@@ -541,9 +542,12 @@
 	    renderPlayers(this.offsetLeft, this.offsetTop, this.longueur, this.largeur);
 
 	    this.placePlayers();
-
-	    this.getItemByName('ball').position = this.getItemByName('t1DC').position.subtract(new Paper.Point(15, 0));
+	    this.placeBall();
 	};
+
+	Terrain.prototype.placeBall = function() {
+	    this.getItemByName('ball').position = this.getItemByName('t1DC').position.subtract(new Paper.Point(15, 0));
+	}
 
 	Terrain.prototype.placePlayers = function() {
 	    var positionAttaque = placePlayer(this.longueur, this.largeur, this.offsetLeft, this.offsetTop);

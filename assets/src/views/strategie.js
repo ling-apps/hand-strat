@@ -48,6 +48,7 @@ StrategieView.prototype.setModel = function setModel(model) {
 StrategieView.prototype.reset = function reset() {
   this.terrain.placeDefence('1-5');
   this.terrain.placePlayers();
+  this.terrain.placeBall();
 }
 
 StrategieView.prototype._render = function() {
