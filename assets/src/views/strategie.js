@@ -121,8 +121,11 @@ StrategieView.prototype.paperOnMouseUp = function(e) {
 };
 
 StrategieView.prototype.paperOnFrame = function(e) {
-  if (this.combi && this.combi.length > 0 && this.playing) {
-    this._play();
+  var speed = document.getElementById('speed').value;
+  if (e.count % speed == 0) {
+    if (this.combi && this.combi.length > 0 && this.playing) {
+      this._play();
+    }
   }
 };
 
