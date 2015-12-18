@@ -44,13 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var AppView = __webpack_require__(1);
 	var StrategieView = __webpack_require__(5);
 	var Firebase = __webpack_require__(9);
 
 	var App = {
 	    currentView: null,
-	    _goto: function(routes) {
+	    _goto: function _goto(routes) {
 
 	        if (App[routes]) {
 	            if (this.currentView) {
@@ -60,35 +62,35 @@
 	            App[routes].call(this);
 	        }
 	    },
-	    init: function() {
+	    init: function init() {
 	        var appView = new AppView('#app-wrapper');
 	        appView.render();
 
 	        this._goto('strat');
 	    },
-	    strat: function() {
+	    strat: function strat() {
 	        var Firebase = __webpack_require__(10);
 
 	        var firebaseUrl = 'https://hand-strat.firebaseio.com/';
 	        var firebase = new Firebase(firebaseUrl);
 	        var combis = firebase.child('/combis');
 	        function onSave(combi) {
-	          combis.push(combi)
+	            combis.push(combi);
 	        }
 	        function onRemove(combiId) {
-	          combis.child(combiId).remove()
+	            combis.child(combiId).remove();
 	        }
 	        var stratView = new StrategieView('#content', onSave, onRemove);
 	        stratView.setModel([]);
-	        combis.on('value', function(snapshot) {
-	          var objectList = snapshot.val();
-	          if (objectList === null || objectList === undefined) return;
-	          var keys = Object.keys(objectList);
-	          var combiList = keys.reduce(function(combiList, key) {
-	            combiList.push(Object.assign({}, {id: key}, objectList[key]));
-	            return combiList;
-	          }, []);
-	          stratView.setModel(combiList);
+	        combis.on('value', function (snapshot) {
+	            var objectList = snapshot.val();
+	            if (objectList === null || objectList === undefined) return;
+	            var keys = Object.keys(objectList);
+	            var combiList = keys.reduce(function (combiList, key) {
+	                combiList.push(Object.assign({}, { id: key }, objectList[key]));
+	                return combiList;
+	            }, []);
+	            stratView.setModel(combiList);
 	        });
 	        this.currentView = stratView;
 	    }
@@ -96,10 +98,11 @@
 
 	App.init();
 
-
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	var View = __webpack_require__(2);
 	var _ = __webpack_require__(4);
@@ -108,10 +111,10 @@
 	AppView.constructor = AppView;
 	function AppView(selector) {
 	    this.$el = selector;
-	    this.template = 'app-template'
+	    this.template = 'app-template';
 	}
 
-	AppView.prototype._render = function() {
+	AppView.prototype._render = function () {
 	    var tpl = document.getElementById(this.template).innerHTML;
 	    var html = _.template(tpl)();
 	    document.querySelector(this.$el).innerHTML = html;
@@ -119,10 +122,11 @@
 
 	module.exports = AppView;
 
-
 /***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	var Microee = __webpack_require__(3);
 
@@ -136,7 +140,7 @@
 	    this.$el = null;
 	    this.template = null;
 	}
-	View.prototype.addEvent = function(eventType, selector, callback) {
+	View.prototype.addEvent = function (eventType, selector, callback) {
 	    var elmt = document.querySelector(this.$el);
 	    if (!selector) {
 	        Gator(elmt).on(eventType, callback.bind(this));
@@ -144,15 +148,15 @@
 	        Gator(elmt).on(eventType, selector, callback.bind(this));
 	    }
 	};
-	View.prototype.removeEvent = function(eventType, selector, callback) {
+	View.prototype.removeEvent = function (eventType, selector, callback) {
 	    var elmt = document.querySelector(this.$el);
 	    Gator(elmt).off(eventType, selector, callback.bind(this));
 	};
-	View.prototype._unbind = function() {
+	View.prototype._unbind = function () {
 	    var elmt = document.querySelector(this.$el);
 	    Gator(elmt).off();
 	};
-	View.prototype.render = function() {
+	View.prototype.render = function () {
 	    this._unbind();
 	    for (var eventType in this.events) {
 	        for (var selector in this.events[eventType]) {
@@ -164,7 +168,7 @@
 	    if (this._render) {
 	        this._render();
 	    } else {
-	        this.children.forEach(function(childView) {
+	        this.children.forEach(function (childView) {
 	            childView.view.render();
 	        });
 	    }
@@ -173,21 +177,21 @@
 	    }
 	};
 
-	View.prototype.addView = function(label, view) {
-	    this.children.push({label: label, view: view});
+	View.prototype.addView = function (label, view) {
+	    this.children.push({ label: label, view: view });
 	};
 
-	View.prototype.getView = function(label) {
-	    var matches = this.children.filter(function(childView) {
+	View.prototype.getView = function (label) {
+	    var matches = this.children.filter(function (childView) {
 	        return label === childView.label;
 	    });
 
 	    return matches ? matches[0].view : null;
 	};
 
-	View.prototype.destroy = function() {
+	View.prototype.destroy = function () {
 	    this._unbind();
-	}
+	};
 
 	Microee.mixin(View);
 
@@ -264,6 +268,8 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var View = __webpack_require__(2);
 	var _ = __webpack_require__(4);
 	var Paper = __webpack_require__(6);
@@ -274,7 +280,7 @@
 	function StrategieView(selector, onSave, onRemove) {
 	  this.onSave = onSave;
 	  this.onRemove = onRemove;
-	  this.$el = selector
+	  this.$el = selector;
 	  this.dragItem = null;
 	  this.recording = false;
 	  this.paper;
@@ -288,19 +294,19 @@
 	      '.reset': this.reset,
 	      '.record': this.record,
 	      '.combi': this.play,
-	      '.save': function(e) {
+	      '.save': function save(e) {
 	        e.preventDefault();
 	        var name = document.querySelector(this.$el + " input[name='name']").value;
 	        var data = {
-	            name: name,
-	            combi: this.combi
+	          name: name,
+	          combi: this.combi
 	        };
 	        this.onSave(data);
 	      },
-	      '.btn-delete': function(e) {
+	      '.btn-delete': function btnDelete(e) {
 	        var combiId = e.target.getAttribute('data-combi-id');
 	        e.preventDefault();
-	        this.onRemove(combiId)
+	        this.onRemove(combiId);
 	      }
 	    }
 	  };
@@ -315,12 +321,12 @@
 	  this.terrain.placeDefence('1-5');
 	  this.terrain.placePlayers();
 	  this.terrain.placeBall();
-	}
+	};
 
-	StrategieView.prototype._render = function() {
+	StrategieView.prototype._render = function () {
 	  var tplContent = document.getElementById('strat-template').innerHTML;
 	  var tpl = _.template(tplContent);
-	  document.querySelector(this.$el).innerHTML = tpl({combis: this.combis});
+	  document.querySelector(this.$el).innerHTML = tpl({ combis: this.combis });
 
 	  var canvas = document.getElementById('canvas-compo');
 
@@ -342,20 +348,20 @@
 	  this.paper.view.onFrame = this.paperOnFrame.bind(this);
 	};
 
-	StrategieView.prototype.paperOnMouseDown = function(e) {
-	  if (e.item && e.item.draggable ) {
+	StrategieView.prototype.paperOnMouseDown = function (e) {
+	  if (e.item && e.item.draggable) {
 	    this.dragItem = e.item;
 	  }
 	};
 
-	StrategieView.prototype.paperOnMouseDrag = function(e) {
+	StrategieView.prototype.paperOnMouseDrag = function (e) {
 	  if (this.dragItem) {
 	    var ball = this.getItemByNodeName('ball');
 
 	    if (this.dragItem !== ball) {
 	      var intersections = this.dragItem.getIntersections(ball);
 
-	      if (intersections.length > 0 ) {
+	      if (intersections.length > 0) {
 	        var vector = ball.position.subtract(this.dragItem.position);
 	      }
 	    }
@@ -378,16 +384,15 @@
 	        y: ballPos.y,
 	        name: 'ball'
 	      });
-
 	    }
 	  }
 	};
 
-	StrategieView.prototype.paperOnMouseUp = function(e) {
+	StrategieView.prototype.paperOnMouseUp = function (e) {
 	  this.dragItem = null;
 	};
 
-	StrategieView.prototype.paperOnFrame = function(e) {
+	StrategieView.prototype.paperOnFrame = function (e) {
 	  var speed = document.getElementById('speed').value;
 	  if (e.count % speed == 0) {
 	    if (this.combi && this.combi.length > 0 && this.playing) {
@@ -396,7 +401,7 @@
 	  }
 	};
 
-	StrategieView.prototype.record = function() {
+	StrategieView.prototype.record = function () {
 	  this.recording = !this.recording;
 
 	  if (!this.recording) {
@@ -408,7 +413,7 @@
 	  }
 	};
 
-	StrategieView.prototype.play = function(e) {
+	StrategieView.prototype.play = function (e) {
 	  var combiId = e.target.getAttribute('data-combi-id');
 
 	  /* Add a remove button for the selected combi */
@@ -429,7 +434,7 @@
 	  this.terrain.placePlayers();
 	  this.terrain.placeDefence('1-5');
 
-	  var aCombi = this.combis.filter(function(combi) {
+	  var aCombi = this.combis.filter(function (combi) {
 	    return combi.id === combiId;
 	  });
 	  this.combi = aCombi[0].combi.slice(0);
@@ -443,11 +448,11 @@
 	  this.playing = true;
 	};
 
-	StrategieView.prototype.getItemByNodeName = function(nodeName) {
+	StrategieView.prototype.getItemByNodeName = function (nodeName) {
 	  return this.paper.project.layers[0].children[nodeName];
 	};
 
-	StrategieView.prototype._play = function() {
+	StrategieView.prototype._play = function () {
 	  var step = this.combi.shift();
 	  var item = this.getItemByNodeName(step.name);
 	  item.position = new Paper.Point(step.x, step.y);
@@ -466,7 +471,6 @@
 	};
 
 	module.exports = StrategieView;
-
 
 /***/ },
 /* 6 */
@@ -783,30 +787,31 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var Firebase = __webpack_require__(10);
 
 	var firebase = new Firebase('https://hand-strat.firebaseio.com/');
 
 	var Firebase = {
-	  getCombis: function() {
+	  getCombis: function getCombis() {
 	    return firebase.get('combis');
 	  },
-	  getCombi: function(id) {
+	  getCombi: function getCombi(id) {
 	    return firebase.get('combis.' + id);
 	  },
-	  createCombi: function(combi) {
+	  createCombi: function createCombi(combi) {
 	    return firebase.push('combis', combi);
 	  },
-	  udpateCombi: function(id, combi) {
+	  udpateCombi: function udpateCombi(id, combi) {
 	    return firebase.update('combis.' + id, combi);
 	  },
-	  deleteCombi: function(id) {
+	  deleteCombi: function deleteCombi(id) {
 	    return firebase.remove('combis.' + id);
 	  }
 	};
 
 	module.exports = Firebase;
-
 
 /***/ },
 /* 10 */
