@@ -1,7 +1,6 @@
 module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-browserify2');
     grunt.loadNpmTasks('grunt-contrib-compass');
 
     // Project configuration.
@@ -10,16 +9,8 @@ module.exports = function (grunt) {
         /* DEV MODE - auto compile & test */
         'watch': {
             'src': {
-                files: ['assets/**/*'],
-                tasks: ['buildAssets']
-            }
-        },
-
-        browserify2: {
-            dev: {
-                entry: './assets/src/app.js',
-                compile: './public/js/app.js',
-                debug: false
+                files: ['assets/scss/*.scss'],
+                tasks: ['compass:dev']
             }
         },
 
@@ -38,7 +29,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['buildAssets', 'watch']);
-
-    grunt.registerTask('buildAssets', ['browserify2', 'compass:dev']);
+    grunt.registerTask('default', ['compass:dev', 'watch']);
 };

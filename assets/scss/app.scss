@@ -1,133 +1,32 @@
-@import "compass/css3/border-radius";
-@import "compass/css3/transition";
-@import "compass/css3/box-shadow";
-@import "compass/css3/images";
-@import "hand";
-
-$color1: #3e3e3e;
-$color2: #333;
-$color3: #8e8e8e;
-$link: #e9e9e9;
-
-$borderRadius: 0;
-
-/**
- * Base LAYOUT
- */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
-/**
- * Typo
- */
-html {
-  font-size: 13px;
-  font-family: Arial, Verdana, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-}
-
-h1 {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-}
-
-h2 {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-}
-
-h3 {
-  font-size: 14px;
-  font-weight: normal;
-  text-align: center;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  color: #333;
-  font-size: 14px;
-  list-style-type: none;
-  line-height: 18px;
-}
-
-a {
-  color: $link;
-  text-decoration: none;
-}
+@import "variables";
+@import "layout";
+@import "header";
+@import "player";
+@import "nav";
 
 input {
+  padding: 6px 5px 7px 5px;
+  border: 1px solid $secondary;
+  border-radius: 3px;
+  box-shadow: none;
   background: white;
-  border: 1px solid $color1;
-  padding: 4px 5px;
+  outline: none;
+}
+input:focus {
+  border-color: $primary;
 }
 
-/**
- * TOOLS
- */
-
-.float-right {
-  float: right;
-}
-
-.btn {
-  cursor: pointer;
-
+.btn-primary {
   display: inline-block;
-  padding: 2px 8px;
-  margin: 0;
-  width: auto;
-
-  text-align: center;
-  color: #333;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  font-size: 13px;
-  font-weight: normal;
-  line-height: 20px;
-
-  border: 1px solid #8D8D8D;
-
-  @include border-radius($borderRadius);
-
-  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
-
-  &.small {
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-
-  background: darken(#ffffff, 10);
-
-  &:hover {
-    background: #c3c1c1;
-    background-position: 0 -15px;
-    color: #333;
-    text-decoration: none;
-  }
-
-  &.active {
-    background: #c3c1c1;
-    background-position: 0 -15px;
-    color: #333;
-    text-decoration: none;
-  }
+  border: 1px solid $primary;
+  color: $primary;
+  background: white;
+  box-shadow: none;
+  padding: 6px 10px 7px;
+  border-radius: 3px;
+}
+.btn-large {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-@import "header";
-@import "footer";
-@import "content";

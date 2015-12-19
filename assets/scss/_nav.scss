@@ -1,0 +1,41 @@
+.main-nav {
+  padding-top: 10px;
+}
+
+.create-strat-wrapper {
+  text-align: center;
+}
+
+.combi-list {
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.combi-list-item {
+  padding: 5px 0;
+  color: #847B7B;
+  border-left: 5px solid transparent;
+}
+
+.combi-list-item:hover {
+  background: #d9d9d9;
+  border-left: 5px solid $secondary;
+}
+
+.combi-list-item.selected {
+  background: white;
+  font-size: bold;
+  color: $primary;
+  border-left: 5px solid $primary;
+}
+
+.combi-list-item-name {
+  display: inline-block;
+  padding-left: 10px;
+  width: 90%;
+}
+
+.combi-list-item .remove {
+  display: inline-block;
+  width: 10%;
+}
